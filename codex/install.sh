@@ -9,7 +9,7 @@ set -euo pipefail
 # Configuração para instalação remota:
 # Se o usuário baixar apenas este script, ele tentará baixar os temas deste URL.
 # Altere para o link do seu repositório no GitHub (Raw).
-GITHUB_BASE_URL="https://raw.githubusercontent.com/SEU_USUARIO/SEU_REPOSITORIO/main/codex"
+GITHUB_BASE_URL="https://raw.githubusercontent.com/victorcrbt/sovietwave/main/codex"
 # -----------------------------------------------------------------------------
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
@@ -20,14 +20,15 @@ RED='\033[0;31m'; CYAN='\033[0;36m'; GREEN='\033[0;32m'
 YELLOW='\033[1;33m'; BOLD='\033[1m'; RESET='\033[0m'
 
 echo -e "\n${RED}╔══════════════════════════════════════════╗${RESET}"
-echo -e "${RED}║${CYAN}   🌊  SOVIETWAVE — Codex Theme Installer  ${RED}║${RESET}"
+echo -e "${RED}║${CYAN}   🌊  SOVIETWAVE — Codex Theme Installer ${RED}║${RESET}"
 echo -e "${RED}╚══════════════════════════════════════════╝${RESET}\n"
 
 # 1. Escolha da variante
 echo -e "Qual variante você deseja instalar?"
 echo -e "  1) SovietWave (Base)"
 echo -e "  2) SovietWave - Zhukov"
-read -r -p "Escolha [1/2]: " VARIANT_CHOICE
+# Adicionado < /dev/tty para suportar execução via 'curl | bash'
+read -r -p "Escolha [1/2]: " VARIANT_CHOICE < /dev/tty
 
 if [ "$VARIANT_CHOICE" == "2" ]; then
   THEME_FILENAME="sovietwave-zhukov.json"
@@ -44,7 +45,7 @@ if [ -f "$THEME_FILE" ]; then
 else
   echo -e "${YELLOW}→ Tema local não encontrado. Baixando do GitHub...${RESET}"
   if ! curl -sfL "$GITHUB_BASE_URL/$THEME_FILENAME" -o /tmp/codex_theme.json; then
-    echo -e "${RED}✗ Falha ao baixar o tema. Verifique a URL configurada no script.${RESET}"
+    echo -e "${RED}✗ Falha ao baixar o tema. Verifique a URL: $GITHUB_BASE_URL/$THEME_FILENAME${RESET}"
     exit 1
   fi
   THEME_CONTENT=$(cat /tmp/codex_theme.json)
@@ -62,9 +63,9 @@ if [ ! -x "$CODEX_BIN" ]; then
   echo -e "${YELLOW}⚠ Codex não encontrado no local padrão ($CODEX_BIN).${RESET}"
   echo -e "Dica: No Mac, normalmente ele fica em /Applications/Codex.app/Contents/MacOS/Codex"
   echo -e "No Linux/Windows WSL, o caminho pode variar."
-  read -r -p "Gostaria de informar o caminho do binário manualmente? (S/N) " RESP
+  read -r -p "Gostaria de informar o caminho do binário manualmente? (S/N) " RESP < /dev/tty
   if [[ "$RESP" =~ ^[Ss]$ ]]; then
-    read -r -p "Informe o caminho: " CODEX_BIN
+    read -r -p "Informe o caminho: " CODEX_BIN < /dev/tty
     CODEX_BIN="${CODEX_BIN/#\~/$HOME}"
     if [ ! -x "$CODEX_BIN" ]; then
       echo -e "${RED}✗ Binário inválido. Cancelando.${RESET}"
