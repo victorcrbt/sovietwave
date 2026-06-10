@@ -8,6 +8,7 @@ Atualmente fornecemos temas nativos adaptados para os seguintes editores e plata
 
 - **[Visual Studio Code](docs/vscode.md)**
 - **[Codex Desktop](docs/codex.md)**
+- **[Warp Terminal](docs/warp.md)**
 
 ## 🎨 Variantes
 
@@ -21,6 +22,7 @@ Siga os guias abaixo de acordo com a sua ferramenta favorita para descobrir como
 
 - [Como instalar no Visual Studio Code](docs/vscode.md)
 - [Como instalar no Codex Desktop](docs/codex.md)
+- [Como instalar no Warp Terminal](docs/warp.md)
 
 ---
 *Criado para desenvolvedores que codificam nas fronteiras do retrofuturo.*
