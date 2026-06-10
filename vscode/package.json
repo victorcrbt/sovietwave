@@ -1,0 +1,27 @@
+{
+  "name": "sovietwave",
+  "displayName": "SovietWave",
+  "description": "Tema que mistura a estética Synthwave com as cores do comunismo",
+  "publisher": "victor",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "SovietWave",
+        "uiTheme": "vs-dark",
+        "path": "./themes/sovietwave.json"
+      },
+      {
+        "label": "SovietWave - Zhukov",
+        "uiTheme": "vs-dark",
+        "path": "./themes/sovietwave-zhukov.json"
+      }
+    ]
+  }
+}

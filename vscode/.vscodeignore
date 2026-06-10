@@ -1,0 +1,11 @@
+.vscode/**
+.vscode-test/**
+out/**
+node_modules/**
+src/**
+.gitignore
+.yarnrc
+webpack.config.js
+webpack.config.base.js
+vsc-extension-quickstart.md
+**/*.backup-*.json
